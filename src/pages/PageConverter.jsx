@@ -6,10 +6,10 @@ import { Footer } from "../components/footer";
 
 export const PageConverter = () => {
   return (
-    <>
+    <div className="convertor">
       <Header />
       <Convert />
       <Footer />
-    </>
+    </div>
   );
 };
