@@ -7,10 +7,14 @@ import { Convert } from "../components/convert";
 import { Footer } from "../components/footer";
 
 const PageConverter = ({ currencyData, fetchCurrency }) => {
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     fetchCurrency();
+  //   }, 100000);
+  // }, [fetchCurrency]);
   useEffect(() => {
     fetchCurrency();
-  }, []);
-
+  }, [fetchCurrency]);
   return currencyData.loading ? (
     <h2>Loading</h2>
   ) : currencyData.error ? (
