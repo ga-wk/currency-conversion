@@ -6,7 +6,7 @@ import { Footer } from "../components/footer";
 
 export const PageCurrency = () => {
   return (
-    <div className="currency">
+    <div className="page">
       <Header />
       <Currency />
       <Footer />

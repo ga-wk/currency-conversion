@@ -21,14 +21,12 @@ test("nav links", () => {
   expect(linkToCurrency).toBeInTheDocument();
 });
 
-
-test('sub menu', () => {
+test("sub menu", () => {
   render(<Header />);
 
   const linkToConverter = screen.getByLabelText(/Валюта по умолчанию:/i);
   expect(linkToConverter).toBeInTheDocument();
 
-  const select = screen.getByTestId("selector")
+  const select = screen.getByTestId("selector");
   expect(select).toBeInTheDocument();
 });
-

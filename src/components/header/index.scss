@@ -104,7 +104,7 @@ body {
     background: #9b51e0;
   }
 
-  z-index: 1;
+  z-index: 2;
 }
 
 .sub-menu {
@@ -124,7 +124,7 @@ body {
     margin-left: 25px;
   }
 
-  z-index: 1;
+  z-index: 2;
 }
 
 .close-nav {
@@ -142,6 +142,8 @@ body {
 
   background: #c4c4c4;
   opacity: 0.4;
+
+  z-index: 1;
 }
 
 .text {

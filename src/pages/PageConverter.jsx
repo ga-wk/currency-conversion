@@ -6,7 +6,7 @@ import { Footer } from "../components/footer";
 
 export const PageConverter = () => {
   return (
-    <div className="convertor">
+    <div className="page">
       <Header />
       <Convert />
       <Footer />
