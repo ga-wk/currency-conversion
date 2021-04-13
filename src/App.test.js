@@ -7,7 +7,7 @@ test("buttons menu", () => {
   expect(screen.getByTestId("btn-nav")).toBeInTheDocument();
   expect(screen.getByTestId("btn-sub")).toBeInTheDocument();
 
-  expect(screen.getByTestId("svg-nav")).toBeInTheDocument();
+  expect(screen.getByTestId("nav")).toBeInTheDocument();
   expect(screen.getByTestId("svg-sub")).toBeInTheDocument();
 });
 
