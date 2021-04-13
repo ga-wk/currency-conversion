@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 
 import "./index.scss";
 
-export const Header = () => {
+export const Header = (props) => {
   const nav = useRef(null);
   const sub = useRef(null);
   const wrapper = useRef(null);
@@ -36,7 +36,7 @@ export const Header = () => {
   //Анимация меню настроек
   const handleSubMenu = (e) => {
     e.preventDefault();
-
+    
     if (!nav.current.classList.contains("close-nav")) {
       nav.current.classList.add("close-nav");
       sub.current.classList.toggle("close-sub");
