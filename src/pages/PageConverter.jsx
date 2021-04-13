@@ -1,22 +1,21 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { fetchCurrency } from "../redux/currency/actions.js";
 
 import { Header } from "../components/header";
 import { Convert } from "../components/convert";
 import { Footer } from "../components/footer";
-import { applyMiddleware, createStore } from "redux";
-import { currencyReducer } from "../redux/currency/currencyReducer";
-import logger from "redux-logger";
-import thunk from "redux-thunk"
 
-export const PageConverter = () => {
-  let store = createStore(currencyReducer, applyMiddleware(logger, thunk));
+const PageConverter = ({ currencyData, fetchCurrency }) => {
+  useEffect(() => {
+    fetchCurrency();
+  }, []);
 
-  store.dispatch({
-    type: "GET",
-  });
-
-  console.log(store.getState());
-  return (
+  return currencyData.loading ? (
+    <h2>Loading</h2>
+  ) : currencyData.error ? (
+    <h2>{currencyData.error}</h2>
+  ) : (
     <div className="page">
       <Header />
       <Convert />
@@ -24,3 +23,17 @@ export const PageConverter = () => {
     </div>
   );
 };
+
+const mapStateToProps = (state) => {
+  return {
+    currencyData: state.currency,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchCurrency: () => dispatch(fetchCurrency()),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(PageConverter);

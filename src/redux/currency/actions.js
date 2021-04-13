@@ -20,7 +20,7 @@ export const fecthCurrencyFailed = (error) => ({
   error,
 });
 
-export const fecthCurrency = () => {
+export const fetchCurrency = () => {
   return (dispatch) => {
       dispatch(fecthCurrencyStarted)
     axios
