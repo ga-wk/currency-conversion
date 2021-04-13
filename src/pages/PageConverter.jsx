@@ -4,7 +4,7 @@ import { Header } from "../components/header";
 import { Convert } from "../components/convert";
 import { Footer } from "../components/footer";
 import { applyMiddleware, createStore } from "redux";
-import { currencyReducer } from "../store/reducer";
+import { currencyReducer } from "../redux/currency/currencyReducer";
 import logger from "redux-logger";
 import thunk from "redux-thunk"
 
