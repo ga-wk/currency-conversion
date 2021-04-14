@@ -7,14 +7,18 @@ import { Convert } from "../components/convert";
 import { Footer } from "../components/footer";
 
 const PageConverter = ({ currencyData, fetchCurrency }) => {
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     fetchCurrency();
-  //   }, 100000);
-  // }, [fetchCurrency]);
+
+  //Обновление данных каждые 10сек
   useEffect(() => {
     fetchCurrency();
+
+    const intervalId = setInterval(() => {
+      fetchCurrency();
+    }, 10000);
+
+    return () => clearInterval(intervalId);
   }, [fetchCurrency]);
+
   return currencyData.loading ? (
     <h2>Loading</h2>
   ) : currencyData.error ? (
