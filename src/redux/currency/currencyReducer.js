@@ -19,7 +19,7 @@ export const currencyReducer = (state = initialState, action) => {
       };
     case FETCH_CURRENCY_SUCCEEDED:
       return {
-        loading: false,
+        loading: true,
         currency: action.payload,
         error: "",
       };

@@ -26,7 +26,7 @@ const PageConverter = ({ currencyData, fetchCurrency }) => {
   }
   store.dispatch(setDefaultCurrency(localStorage.getItem("cur")));
 
-  return currencyData.loading ? (
+  return !currencyData.loading ? (
     <h2>Loading</h2>
   ) : currencyData.error ? (
     <h2>{currencyData.error}</h2>
