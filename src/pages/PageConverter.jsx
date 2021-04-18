@@ -9,7 +9,6 @@ import { setDefaultCurrency } from "../redux/defaultCurrency/actions.js";
 import store from "../redux/store.js";
 
 const PageConverter = ({ currencyData, fetchCurrency }) => {
-
   //Обновление данных каждые 10сек
   useEffect(() => {
     fetchCurrency();
@@ -25,8 +24,8 @@ const PageConverter = ({ currencyData, fetchCurrency }) => {
   if (!localStorage.getItem("cur")) {
     localStorage.setItem("cur", "RUS");
   }
-  store.dispatch(setDefaultCurrency(localStorage.getItem('cur')))
-  
+  store.dispatch(setDefaultCurrency(localStorage.getItem("cur")));
+
   return currencyData.loading ? (
     <h2>Loading</h2>
   ) : currencyData.error ? (

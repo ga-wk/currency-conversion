@@ -22,16 +22,16 @@ export const fecthCurrencyFailed = (error) => ({
 
 export const fetchCurrency = () => {
   return (dispatch) => {
-      dispatch(fecthCurrencyStarted)
-      return axios
+    dispatch(fecthCurrencyStarted);
+    return axios
       .get("https://www.cbr-xml-daily.ru/daily_json.js")
       .then((response) => {
         const currency = response.data;
-        dispatch(fecthCurrencySucceeded(currency))
+        dispatch(fecthCurrencySucceeded(currency));
       })
       .catch((error) => {
-        const errorMsg = error.message
-        dispatch(fecthCurrencyFailed(errorMsg))
+        const errorMsg = error.message;
+        dispatch(fecthCurrencyFailed(errorMsg));
       });
   };
 };

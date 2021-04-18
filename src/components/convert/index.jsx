@@ -1,9 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
+import store from "../../redux/store";
 import { listCurrency } from "../public";
 
 import "./index.scss";
 
-export const Convert = (props) => {
+export const Convert = () => {
+  const [currency] = useState (
+    store.getState().defaultCurrency.defaultCurrency
+  );
+
   let today = new Date(Date.now());
 
   const monthNames = [
@@ -20,6 +25,7 @@ export const Convert = (props) => {
     "Ноябрь",
     "Декабрь",
   ];
+
   return (
     <div className="convert">
       <p className="convert__title">
@@ -37,14 +43,14 @@ export const Convert = (props) => {
           name="from"
           defaultValue={localStorage.getItem("cur")}
         >
-          {listCurrency()}
+          {listCurrency(currency)}
         </select>
         <select
           className="convert__select-to"
           name="to"
           defaultValue="Доллар США"
         >
-          {listCurrency()}
+          {listCurrency('USD')}
         </select>
         <input className="convert__input-from" type="text" />
         <input className="convert__input-to" type="text" readOnly={true} />

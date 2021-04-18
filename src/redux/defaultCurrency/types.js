@@ -1,1 +1,1 @@
-export const SET_DEFAULT_CURRENCY = 'setDefaultCurrency'
+export const SET_DEFAULT_CURRENCY = "setDefaultCurrency";

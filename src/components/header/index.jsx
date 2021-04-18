@@ -9,17 +9,17 @@ export const Header = (props) => {
   const nav = useRef(null);
   const sub = useRef(null);
   const wrapper = useRef(null);
-  const [currency, setСurrency] = useState(store.getState().defaultCurrency.defaultCurrency);
-  // const cur = store.getState().defaultCurrency.defaultCurrency
-  console.log(currency)
-
+  const [currency, setСurrency] = useState(
+    store.getState().defaultCurrency.defaultCurrency
+  );
 
   //Изменение начальной валюты
   const saveDefaultCurrency = (e) => {
     e.preventDefault();
     localStorage.setItem("cur", e.target.value);
-    setСurrency(e.target.value)
-    store.dispatch(setDefaultCurrency(e.target.value))
+    setСurrency(e.target.value);
+    store.dispatch(setDefaultCurrency(e.target.value));
+    console.log(currency)
   };
 
   //Анимация меню навигации
@@ -75,7 +75,6 @@ export const Header = (props) => {
               className="btn"
               data-testid="btn-sub"
               onClick={handleSubMenu}
-              
             >
               <span className="hidden">Настройки</span>
               <svg
@@ -126,7 +125,7 @@ export const Header = (props) => {
                 id="select-currency"
                 onChange={saveDefaultCurrency}
               >
-                {listCurrency()}
+                {listCurrency(currency)}
               </select>
             </p>
           </li>

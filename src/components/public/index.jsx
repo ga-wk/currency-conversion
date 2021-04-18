@@ -1,11 +1,11 @@
 import store from "../../redux/store";
 
-export const listCurrency = () => {
+export const listCurrency = (selected) => {
   const valute = store.getState().currency.currency.Valute;
 
   let options = [];
 
-  const isSelected = (key) => (valute[key].Name === localStorage.getItem('cur') ? true : false)
+  const isSelected = (key) => (key === selected ? true : false)
   for (let key in valute) {
     options.push(
       <option selected={isSelected(key)} key={key} value={key}>
@@ -15,7 +15,7 @@ export const listCurrency = () => {
   }
 
   options.push(
-    <option selected={'Российский рубль' === localStorage.getItem('cur')} key={"RUS"} value="RUS">
+    <option selected={isSelected("RUS")} key={"RUS"} value="RUS">
       Российский рубль
     </option>
   );
