@@ -1,4 +1,5 @@
 import React, { useRef } from "react";
+import store from '../../redux/store'
 
 import "./index.scss";
 
@@ -48,6 +49,14 @@ export const Header = (props) => {
     return true;
   };
 
+  const valute = store.getState().currency.currency.Valute
+
+  let options = [];
+  for (let key in valute) {
+    options.push( <option value={valute[key].Name}>{valute[key].Name}</option>)
+  }
+  
+  console.log(valute)
   return (
     <>
       <header className="header">
@@ -120,9 +129,8 @@ export const Header = (props) => {
                 onChange={saveDefaultCurrency}
                 defaultValue={localStorage.getItem("cur")}
               >
+                {options}
                 <option value="Российский рубль">Российский рубль</option>
-                <option value="Доллар США">Доллар США</option>
-                <option value="Евро">Евро</option>
               </select>
             </p>
           </li>
