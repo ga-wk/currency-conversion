@@ -5,6 +5,8 @@ import { fetchCurrency } from "../redux/currency/actions.js";
 import { Header } from "../components/header";
 import { Convert } from "../components/convert";
 import { Footer } from "../components/footer";
+import { setDefaultCurrency } from "../redux/defaultCurrency/actions.js";
+import store from "../redux/store.js";
 
 const PageConverter = ({ currencyData, fetchCurrency }) => {
 
@@ -19,6 +21,12 @@ const PageConverter = ({ currencyData, fetchCurrency }) => {
     return () => clearInterval(intervalId);
   }, [fetchCurrency]);
 
+  //Начальная валюта
+  if (!localStorage.getItem("cur")) {
+    localStorage.setItem("cur", "RUS");
+  }
+  store.dispatch(setDefaultCurrency(localStorage.getItem('cur')))
+  
   return currencyData.loading ? (
     <h2>Loading</h2>
   ) : currencyData.error ? (

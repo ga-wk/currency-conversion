@@ -1,4 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
+import { setDefaultCurrency } from "../../redux/defaultCurrency/actions";
+import store from "../../redux/store";
 import { listCurrency } from "../public";
 
 import "./index.scss";
@@ -7,16 +9,17 @@ export const Header = (props) => {
   const nav = useRef(null);
   const sub = useRef(null);
   const wrapper = useRef(null);
+  const [currency, setСurrency] = useState(store.getState().defaultCurrency.defaultCurrency);
+  // const cur = store.getState().defaultCurrency.defaultCurrency
+  console.log(currency)
 
-  //Начальная валюта
-  if (!localStorage.getItem("cur")) {
-    localStorage.setItem("cur", "Российский рубль");
-  }
 
   //Изменение начальной валюты
   const saveDefaultCurrency = (e) => {
     e.preventDefault();
     localStorage.setItem("cur", e.target.value);
+    setСurrency(e.target.value)
+    store.dispatch(setDefaultCurrency(e.target.value))
   };
 
   //Анимация меню навигации
@@ -122,7 +125,6 @@ export const Header = (props) => {
                 data-testid="selector"
                 id="select-currency"
                 onChange={saveDefaultCurrency}
-                defaultValue={localStorage.getItem("cur")}
               >
                 {listCurrency()}
               </select>
