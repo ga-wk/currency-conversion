@@ -59,6 +59,7 @@ export const Header = (props) => {
               data-testid="btn-nav"
               onClick={handleNavMenu}
             >
+              <span className="hidden">Меню навигации</span>
               <div data-testid="nav" className="nav-burger">
                 <div className="line"></div>
                 <div className="line"></div>
@@ -71,7 +72,9 @@ export const Header = (props) => {
               className="btn"
               data-testid="btn-sub"
               onClick={handleSubMenu}
+              
             >
+              <span className="hidden">Настройки</span>
               <svg
                 width="25"
                 height="25"

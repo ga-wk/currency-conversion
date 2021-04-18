@@ -1,4 +1,5 @@
-import { render, screen } from "@testing-library/react";
+import React from "react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import fetchMock from "fetch-mock";
 import { Convert } from "./components/convert";
 import { Header } from "./components/header";
@@ -16,6 +17,20 @@ test("buttons menu", () => {
   expect(screen.getByTestId("nav")).toBeInTheDocument();
   expect(screen.getByTestId("svg-sub")).toBeInTheDocument();
 });
+
+test('nav event', () => {
+  const handleClick = jest.fn()
+  render(<Header />)
+  fireEvent.click(screen.getByText(/Меню навигации/i))
+  expect(handleClick).toHaveBeenCalledTimes(0)
+})
+
+test('sub menu event', () => {
+  const handleClick = jest.fn()
+  render(<Header />)
+  fireEvent.click(screen.getByText(/Настройки/i))
+  expect(handleClick).toHaveBeenCalledTimes(0)
+})
 
 test("nav links", () => {
   render(<Header />);
