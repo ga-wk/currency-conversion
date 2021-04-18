@@ -7,6 +7,7 @@ import { Header } from "./components/header";
 import { fetchCurrency } from "./redux/currency/actions";
 import store from "./redux/store";
 import testData from "./testData";
+import { Footer } from "./components/footer";
 
 test("buttons menu", () => {
   render(<Header />);
@@ -82,5 +83,13 @@ test("Converter", () => {
   text = screen.getByText(/UTC/i);
   expect(text).toBeInTheDocument();
   text = screen.getByText(/Отказ от обязательств/i);
+  expect(text).toBeInTheDocument();
+});
+
+
+test("Footer", () => {
+  render(<Footer />);
+
+  let text = screen.getByText(/© Made with love by Andrey Gazzaev/i);
   expect(text).toBeInTheDocument();
 });
