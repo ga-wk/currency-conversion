@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import store from '../../redux/store'
+import { listCurrency } from "../public";
 
 import "./index.scss";
 
@@ -37,7 +37,7 @@ export const Header = (props) => {
   //Анимация меню настроек
   const handleSubMenu = (e) => {
     e.preventDefault();
-    
+
     if (!nav.current.classList.contains("close-nav")) {
       nav.current.classList.add("close-nav");
       sub.current.classList.toggle("close-sub");
@@ -49,14 +49,6 @@ export const Header = (props) => {
     return true;
   };
 
-  const valute = store.getState().currency.currency.Valute
-
-  let options = [];
-  for (let key in valute) {
-    options.push( <option value={valute[key].Name}>{valute[key].Name}</option>)
-  }
-  
-  console.log(valute)
   return (
     <>
       <header className="header">
@@ -129,8 +121,7 @@ export const Header = (props) => {
                 onChange={saveDefaultCurrency}
                 defaultValue={localStorage.getItem("cur")}
               >
-                {options}
-                <option value="Российский рубль">Российский рубль</option>
+                {listCurrency()}
               </select>
             </p>
           </li>

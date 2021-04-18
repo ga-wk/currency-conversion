@@ -23,7 +23,7 @@ export const Convert = (props) => {
       
     </select>
     <input type="text"/>
-    <input type="text" readOnly="true"/>
+    <input type="text" readOnly={true}/>
   </section>
 </div>);
 };
