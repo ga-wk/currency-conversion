@@ -1,5 +1,11 @@
 import { render, screen } from "@testing-library/react";
+import fetchMock from "fetch-mock";
+import { Convert } from "./components/convert";
 import { Header } from "./components/header";
+// import { listCurrency } from "./components/public";
+import { fetchCurrency } from "./redux/currency/actions";
+import store from "./redux/store";
+import testData from "./testData";
 
 test("buttons menu", () => {
   render(<Header />);
@@ -29,4 +35,37 @@ test("sub menu", () => {
 
   const select = screen.getByTestId("selector");
   expect(select).toBeInTheDocument();
+});
+
+describe("fetch currency", () => {
+  afterEach(() => {
+    fetchMock.restore();
+  });
+
+  it("creates FETCH_CURRENCY_SUCCEEDED when fetching currency has been done", () => {
+    const testdata = testData.Valute;
+    let testKeys = [];
+    for (const key in testdata) {
+      testKeys.push(key);
+    }
+    return store.dispatch(fetchCurrency()).then(() => {
+      const valute = store.getState().currency.currency.Valute;
+      let valuteKeys = [];
+      for (const key in valute) {
+        valuteKeys.push(key);
+      }
+      expect(testKeys).toEqual(valuteKeys);
+    });
+  });
+});
+
+test("Converter", () => {
+  render(<Convert />);
+
+  let text = screen.getByText(/равно/i);
+  expect(text).toBeInTheDocument();
+  text = screen.getByText(/UTC/i);
+  expect(text).toBeInTheDocument();
+  text = screen.getByText(/Отказ от обязательств/i);
+  expect(text).toBeInTheDocument();
 });
