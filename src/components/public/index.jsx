@@ -1,21 +1,22 @@
-import store from "../../redux/store";
-
-export const listCurrency = (selected) => {
-  const valute = store.getState().currency.currency.Valute;
-
+/**
+ * Возвращает массив options, c названиями валют из массива валют.
+ *
+ * @param {array} valute,массив валют
+ * @return {array} [...options] - массив тегов "option value="Сокращенное название">Название валюты</option"
+ */
+export const listCurrency = (valute) => {
   let options = [];
 
-  const isSelected = (key) => (key === selected ? true : false)
   for (let key in valute) {
     options.push(
-      <option selected={isSelected(key)} key={key} value={key}>
+      <option key={key} value={key}>
         {valute[key].Name}
       </option>
     );
   }
 
   options.push(
-    <option selected={isSelected("RUS")} key={"RUS"} value="RUS">
+    <option key={"RUS"} value="RUS">
       Российский рубль
     </option>
   );

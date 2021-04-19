@@ -5,10 +5,12 @@ import { listCurrency } from "../public";
 
 import "./index.scss";
 
-export const Header = (props) => {
+export const Header = () => {
   const nav = useRef(null);
   const sub = useRef(null);
   const wrapper = useRef(null);
+  
+  const [valute] = useState(store.getState().currency.currency.Valute);
   const [currency, setСurrency] = useState(
     store.getState().defaultCurrency.defaultCurrency
   );
@@ -19,7 +21,7 @@ export const Header = (props) => {
     localStorage.setItem("cur", e.target.value);
     setСurrency(e.target.value);
     store.dispatch(setDefaultCurrency(e.target.value));
-    console.log(currency)
+    console.log(currency);
   };
 
   //Анимация меню навигации
@@ -124,8 +126,9 @@ export const Header = (props) => {
                 data-testid="selector"
                 id="select-currency"
                 onChange={saveDefaultCurrency}
+                defaultValue={currency}
               >
-                {listCurrency(currency)}
+                {listCurrency(valute)}
               </select>
             </p>
           </li>

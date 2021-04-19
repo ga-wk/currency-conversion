@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import store from "../../redux/store";
 import { listCurrency } from "../public";
 
@@ -7,7 +7,7 @@ import "./index.scss";
 export const convertFromXToX = (from, to, fromValue) => {
   const valute = store.getState().currency.currency.Valute;
   let toValue = 0;
-  console.log(valute);
+
   if (from === to) {
     return 1;
   }
@@ -32,15 +32,25 @@ export const convertFromXToX = (from, to, fromValue) => {
 };
 
 export const Convert = () => {
-  const [currency] = useState(store.getState().defaultCurrency.defaultCurrency);
+  const from = useRef({
+    value: store.getState().defaultCurrency.defaultCurrency,
+  });
+  const to = useRef({ value: "USD" });
+  const fromValue = useRef(null);
 
-  const [toValue, setToValue] = useState(convertFromXToX(currency, "USD", 1));
+  const [valute] = useState(store.getState().currency.currency.Valute);
+  const [toValue, setToValue] = useState(
+    convertFromXToX(from.current.value, to.current.value, 1)
+  );
 
   const handleConvert = () => {
-    const from = document.querySelector(".convert__select-from").value;
-    const to = document.querySelector(".convert__select-to").value;
-    const fromValue = document.querySelector(".convert__input-from").value;
-    setToValue(convertFromXToX(from, to, fromValue));
+    setToValue(
+      convertFromXToX(
+        from.current.value,
+        to.current.value,
+        fromValue.current.value
+      )
+    );
   };
 
   let today = new Date(Date.now());
@@ -63,8 +73,21 @@ export const Convert = () => {
   return (
     <div className="convert">
       <p className="convert__title">
-        1 Российский рубль равно
-        <span className="text--bold"> 0,013 Доллар США</span>
+        {`1 ${
+          from.current.value === "RUS"
+            ? "Российский рубль"
+            : valute[from.current.value].Name
+        } равно `}
+
+        <span className="text--bold">{`${convertFromXToX(
+          from.current.value,
+          to.current.value,
+          1
+        )} ${
+          to.current.value === "RUS"
+            ? "Российский рубль"
+            : valute[to.current.value].Name
+        }`}</span>
       </p>
       <p className="convert__reject">
         {`${today.getUTCDate()} ${
@@ -75,29 +98,32 @@ export const Convert = () => {
         <select
           className="convert__select-from"
           name="from"
-          defaultValue={localStorage.getItem("cur")}
+          defaultValue={from.current.value}
           onChange={handleConvert}
+          ref={from}
         >
-          {listCurrency(currency)}
+          {listCurrency(valute)}
         </select>
         <select
           className="convert__select-to"
           name="to"
-          defaultValue="USD"
+          defaultValue={to.current.value}
           onChange={handleConvert}
+          ref={to}
         >
-          {listCurrency("USD")}
+          {listCurrency(valute)}
         </select>
         <input
           className="convert__input-from"
           type="text"
           defaultValue="1"
           onChange={handleConvert}
+          ref={fromValue}
         />
         <input
           className="convert__input-to"
           type="text"
-          readOnly={true}
+          disabled={true}
           defaultValue={toValue}
           value={toValue}
         />
