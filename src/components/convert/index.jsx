@@ -131,7 +131,6 @@ export const Convert = () => {
           className="convert__input-to"
           type="text"
           disabled={true}
-          defaultValue={toValue}
           value={toValue}
         />
       </section>
