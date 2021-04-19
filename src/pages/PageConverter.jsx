@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
+import store from "../redux/store.js";
 import { fetchCurrency } from "../redux/currency/actions.js";
+import { setDefaultCurrency } from "../redux/defaultCurrency/actions.js";
 
 import { Header } from "../components/header";
 import { Convert } from "../components/convert";
 import { Footer } from "../components/footer";
-import { setDefaultCurrency } from "../redux/defaultCurrency/actions.js";
-import store from "../redux/store.js";
 
 const PageConverter = ({ currencyData, fetchCurrency }) => {
   //Обновление данных каждые 10сек

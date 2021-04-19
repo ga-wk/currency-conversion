@@ -34,3 +34,20 @@ export const listCurrency = (valute) => {
 
   return options;
 };
+
+export const today = new Date(Date.now());
+
+export const monthNames = [
+  "Январь",
+  "Февраль",
+  "Март",
+  "Апрель",
+  "Май",
+  "Июнь",
+  "Июль",
+  "Август",
+  "Сентябрь",
+  "Октябрь",
+  "Ноябрь",
+  "Декабрь",
+];

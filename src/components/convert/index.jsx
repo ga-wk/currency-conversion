@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import store from "../../redux/store";
-import { listCurrency } from "../public";
+import { listCurrency, monthNames, today } from "../public";
 
 import "./index.scss";
 
@@ -60,26 +60,9 @@ export const Convert = () => {
     );
   };
 
-  let today = new Date(Date.now());
-
-  const monthNames = [
-    "Январь",
-    "Февраль",
-    "Март",
-    "Апрель",
-    "Май",
-    "Июнь",
-    "Июль",
-    "Август",
-    "Сентябрь",
-    "Октябрь",
-    "Ноябрь",
-    "Декабрь",
-  ];
-
   return (
-    <div className="convert">
-      <p className="convert__title">
+    <article className="convert">
+      <h1 className="convert__title">
         {`1 ${
           from.current.value === "RUS"
             ? "Российский рубль"
@@ -95,7 +78,7 @@ export const Convert = () => {
             ? "Российский рубль"
             : valute[to.current.value].Name
         }`}</span>
-      </p>
+      </h1>
       <p className="convert__reject">
         {`${today.getUTCDate()} ${
           monthNames[today.getUTCMonth()]
@@ -134,6 +117,6 @@ export const Convert = () => {
           value={toValue}
         />
       </section>
-    </div>
+    </article>
   );
 };
