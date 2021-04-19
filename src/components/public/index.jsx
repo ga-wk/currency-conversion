@@ -15,6 +15,7 @@ export const listCurrency = (valute) => {
     );
   }
 
+  //в массиве нет российских рублей
   options.push(
     <option key={"RUS"} value="RUS">
       Российский рубль

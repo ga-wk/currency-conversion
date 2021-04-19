@@ -85,7 +85,7 @@ test("Converter", () => {
   text = screen.getByText(/Отказ от обязательств/i);
   expect(text).toBeInTheDocument();
 });
-
+ 
 
 test("Footer", () => {
   render(<Footer />);

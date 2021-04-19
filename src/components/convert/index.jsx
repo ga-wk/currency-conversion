@@ -4,14 +4,17 @@ import { listCurrency } from "../public";
 
 import "./index.scss";
 
+//функция перевода валют
 export const convertFromXToX = (from, to, fromValue) => {
   const valute = store.getState().currency.currency.Valute;
   let toValue = 0;
 
+  // обмен один к одному
   if (from === to) {
     return 1;
   }
 
+  // пуревод из рублей
   if (from === "RUS") {
     toValue =
       (Number(valute[to].Nominal) / Number(valute[to].Value)) *
@@ -19,6 +22,7 @@ export const convertFromXToX = (from, to, fromValue) => {
     return toValue;
   }
 
+  // перевод в рубли
   if (to === "RUS") {
     toValue =
       (Number(valute[from].Value) / Number(valute[from].Nominal)) *
@@ -26,6 +30,7 @@ export const convertFromXToX = (from, to, fromValue) => {
     return toValue;
   }
 
+  //перевод из любой в любую
   let rus = convertFromXToX(from, "RUS", fromValue);
   toValue = convertFromXToX("RUS", to, rus);
   return toValue;
@@ -43,6 +48,8 @@ export const Convert = () => {
     convertFromXToX(from.current.value, to.current.value, 1)
   );
 
+  // событие срабатывающие при изменение значений валют и при изменении самих валют
+  // вызывает функцию по переводу валют
   const handleConvert = () => {
     setToValue(
       convertFromXToX(
