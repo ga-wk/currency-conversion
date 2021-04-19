@@ -22,7 +22,7 @@ export const generateTable = (valute, width) => {
   for (const key in valute) {
     rows.push(
       <tr>
-        <td>{valute[key].NumCode}</td>
+        <td>{valute[key].CharCode}</td>
         <td>{valute[key].Name}</td>
         <td>{valute[key].Nominal}</td>
         <td>{valute[key].Value}</td>
