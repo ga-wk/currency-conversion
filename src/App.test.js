@@ -3,7 +3,6 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import fetchMock from "fetch-mock";
 import { Convert } from "./components/convert";
 import { Header } from "./components/header";
-// import { listCurrency } from "./components/public";
 import { fetchCurrency } from "./redux/currency/actions";
 import store from "./redux/store";
 import testData from "./testData";
@@ -19,19 +18,19 @@ test("buttons menu", () => {
   expect(screen.getByTestId("svg-sub")).toBeInTheDocument();
 });
 
-test('nav event', () => {
-  const handleClick = jest.fn()
-  render(<Header />)
-  fireEvent.click(screen.getByText(/Меню навигации/i))
-  expect(handleClick).toHaveBeenCalledTimes(0)
-})
+test("nav event", () => {
+  const handleClick = jest.fn();
+  render(<Header />);
+  fireEvent.click(screen.getByText(/Меню навигации/i));
+  expect(handleClick).toHaveBeenCalledTimes(0);
+});
 
-test('sub menu event', () => {
-  const handleClick = jest.fn()
-  render(<Header />)
-  fireEvent.click(screen.getByText(/Настройки/i))
-  expect(handleClick).toHaveBeenCalledTimes(0)
-})
+test("sub menu event", () => {
+  const handleClick = jest.fn();
+  render(<Header />);
+  fireEvent.click(screen.getByText(/Настройки/i));
+  expect(handleClick).toHaveBeenCalledTimes(0);
+});
 
 test("nav links", () => {
   render(<Header />);
@@ -85,7 +84,6 @@ test("Converter", () => {
   text = screen.getByText(/Отказ от обязательств/i);
   expect(text).toBeInTheDocument();
 });
- 
 
 test("Footer", () => {
   render(<Footer />);

@@ -55,7 +55,7 @@ export const Header = () => {
     return true;
   };
 
-  //Анимация закрытия всех меню 
+  //Анимация закрытия всех меню
   const handleCloseAllMenu = (e) => {
     e.preventDefault();
     nav.current.classList.add("close-nav");
@@ -64,19 +64,13 @@ export const Header = () => {
     return true;
   };
 
-  // header прокручивается вместе со страницей 
+  // header прокручивается вместе со страницей
   window.addEventListener("scroll", function () {
     if (header.current) {
       if (this.scrollY > 1) {
         header.current.classList.add("header-fixed");
-        nav.current.classList.add("header-scroll");
-        sub.current.classList.add("header-scroll");
-        wrapper.current.classList.add("header-scroll");
       } else {
         header.current.classList.remove("header-fixed");
-        nav.current.classList.remove("header-scroll");
-        sub.current.classList.remove("header-scroll");
-        wrapper.current.classList.remove("header-scroll");
       }
       return false;
     }
@@ -162,7 +156,11 @@ export const Header = () => {
         </ul>
       </div>
 
-      <div className="wrapper hidden" ref={wrapper} onClick={handleCloseAllMenu}></div>
+      <div
+        className="wrapper hidden"
+        ref={wrapper}
+        onClick={handleCloseAllMenu}
+      ></div>
     </>
   );
 };

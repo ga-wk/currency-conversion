@@ -61,19 +61,19 @@ export const Convert = () => {
   };
 
   return (
-    <main className="convert">
+    <main className="convert container">
       <h1 className="convert__title">
         {`1 ${
           from.current.value === "RUS"
             ? "Российский рубль"
             : valute[from.current.value].Name
         } равно `}
-
+        <br/>
         <span className="text--bold">{`${convertFromXToX(
           from.current.value,
           to.current.value,
           1
-        )} ${
+        ).toFixed(5)} ${
           to.current.value === "RUS"
             ? "Российский рубль"
             : valute[to.current.value].Name
@@ -114,7 +114,7 @@ export const Convert = () => {
           className="convert__input-to"
           type="number"
           disabled={true}
-          value={toValue}
+          value={toValue.toFixed(5)}
         />
       </article>
     </main>

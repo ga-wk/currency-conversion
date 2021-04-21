@@ -1,0 +1,114 @@
+.convert {
+  flex: 1 0 auto;
+
+  &__title {
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #222232;
+
+    opacity: 0.8;
+  }
+
+  .text--bold {
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 42px;
+    opacity: 1;
+  }
+
+  &__reject {
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 14px;
+
+    color: #222232;
+
+    opacity: 0.8;
+  }
+
+  &__inputs {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 280px;
+  }
+
+  &__select-from,
+  &__select-to,
+  &__input-from,
+  &__input-to {
+    box-sizing: border-box;
+    border: 1px solid #c4c4c4;
+
+    width: 140px;
+    height: 40px;
+
+    padding: 0 0 0 5px;
+    margin: 0;
+
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+
+    color: #222232;
+  }
+
+  &__select-from,
+  &__input-from {
+    border-right: none;
+  }
+
+  &__select-from,
+  &__input-from {
+    margin-bottom: 10px;
+    border-radius: 5px 0 0 5px;
+  }
+
+  &__select-to,
+  &__input-to {
+    border-radius: 0 5px 5px 0;
+  }
+}
+
+@media (min-width: 767.98px) {
+  .convert {
+    &__title {
+      display: block;
+      margin-bottom: 30px;
+      font-size: 24px;
+    }
+
+    &__title > span {
+      display: block;
+      margin-top: 25px;
+      font-size: 48px;
+    }
+
+    &__reject {
+      margin-bottom: 25px;
+    }
+
+    &__inputs {
+      max-width: 480px;
+    }
+
+    &__select-from,
+    &__select-to,
+    &__input-from,
+    &__input-to {
+      border: 1px solid #c4c4c4;
+      border-radius: 5px;
+      width: 230px;
+
+      padding: 0 0 0 5px;
+
+      font-size: 18px;
+    }
+
+    &__select-from,
+    &__input-from {
+      margin-right: 20px;
+    }
+  }
+}

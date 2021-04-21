@@ -2,7 +2,7 @@
   min-width: 100%;
   min-height: 50px;
   background-color: #9b51e0;
-
+  z-index: 2;
   &__btns {
     margin: 0;
     padding: 12px 20px;
@@ -59,7 +59,7 @@
 .nav-menu {
   position: fixed;
   left: 0px;
-
+  top: 53px;
   min-width: 200px;
   height: 100%;
 
@@ -106,7 +106,7 @@
   position: fixed;
   right: 0px;
   width: 300px;
-
+  top: 53px;
   height: 100%;
 
   transition: all 1s;
@@ -172,10 +172,5 @@
   top: 0;
 
   background-color: #9b51e0;
-
-  z-index: 1;
 }
 
-.header-scroll {
-  top: 53px;
-}
