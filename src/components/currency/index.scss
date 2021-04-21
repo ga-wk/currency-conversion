@@ -50,23 +50,16 @@
   &__body > td {
     border: 1px solid #c4c4c4;
   }
-}
 
-@media (min-width: 767.98px) {
-  .currency__title {
-    font-size: 34px;
-    line-height: 40px;
+  &__body >.red {
+    color: #eb5757;
+
+    opacity: 0.8;
   }
-  .table {
-    &__head {
-      font-size: 16px;
-      line-height: 22px;
-    }
+  &__body >.green {
+    color: #27ae60;
 
-    &__body {
-      font-size: 16px;
-      line-height: 22px;
-    }
+    opacity: 0.8;
   }
 }
 

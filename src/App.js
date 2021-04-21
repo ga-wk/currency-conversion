@@ -1,5 +1,7 @@
 import PageConverter from "./pages/PageConverter";
 import PageCurrency  from "./pages/PageCurrency";
+
+import './styles/scaffolding.scss'
 import store from "./redux/store";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { Provider } from "react-redux";

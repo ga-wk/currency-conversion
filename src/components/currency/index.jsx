@@ -20,6 +20,7 @@ export const generateTable = (valute, width) => {
   );
 
   for (const key in valute) {
+    let change = String(valute[key].Value - valute[key].Previous).slice(0, 4);
     rows.push(
       <tr className="table__body">
         <td>{valute[key].CharCode}</td>
@@ -28,8 +29,20 @@ export const generateTable = (valute, width) => {
         <td>{valute[key].Value}</td>
         {isWidth(
           700,
-          <td>
-            {String(valute[key].Value - valute[key].Previous).slice(0, 4)}
+          <td
+            className={
+              valute[key].Value - valute[key].Previous < 0
+                ? "red"
+                : valute[key].Value - valute[key].Previous === 0
+                ? ""
+                : "green"
+            }
+          >
+            {valute[key].Value - valute[key].Previous < 0
+              ? `-${change}`
+              : valute[key].Value - valute[key].Previous === 0
+              ? change
+              : `+${change}`}
           </td>
         )}
       </tr>
@@ -50,7 +63,9 @@ const CurrencyTable = () => {
   window.addEventListener("resize", updateDimensions);
 
   return (
-    <table className="currency__table container">{generateTable(valute, width)}</table>
+    <table className="currency__table container">
+      {generateTable(valute, width)}
+    </table>
   );
 };
 

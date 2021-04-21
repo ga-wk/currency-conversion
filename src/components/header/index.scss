@@ -1,9 +1,5 @@
-body {
-  overflow-x: hidden;
-}
-
 .header {
-  max-width: 100%;
+  min-width: 100%;
   min-height: 50px;
   background-color: #9b51e0;
 
@@ -11,7 +7,7 @@ body {
     margin: 0;
     padding: 12px 20px;
     list-style-type: none;
-    
+
     display: flex;
 
     justify-content: space-between;
@@ -61,12 +57,11 @@ body {
 }
 
 .nav-menu {
-  position: absolute;
+  position: fixed;
   left: 0px;
 
   min-width: 200px;
-
-  min-height: 100%;
+  height: 100%;
 
   transition: all 1s;
 
@@ -108,11 +103,11 @@ body {
 }
 
 .sub-menu {
-  position: absolute;
+  position: fixed;
   right: 0px;
   width: 300px;
 
-  min-height: 100%;
+  height: 100%;
 
   transition: all 1s;
 
@@ -136,7 +131,7 @@ body {
 }
 
 .wrapper {
-  position: absolute;
+  position: fixed;
   width: 100vw;
   height: 100vh;
 
@@ -169,4 +164,18 @@ body {
 
   border: 1px solid #22223220;
   border-radius: 5px;
+}
+
+.header-fixed {
+  position: fixed;
+  left: 0;
+  top: 0;
+
+  background-color: #9b51e0;
+
+  z-index: 1;
+}
+
+.header-scroll {
+  top: 53px;
 }
