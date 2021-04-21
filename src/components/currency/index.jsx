@@ -10,7 +10,7 @@ export const generateTable = (valute, width) => {
   let rows = [];
 
   rows.push(
-    <tr>
+    <tr className="table__head">
       <th>Код</th>
       <th>Валюта</th>
       <th>Кол-во</th>
@@ -21,12 +21,17 @@ export const generateTable = (valute, width) => {
 
   for (const key in valute) {
     rows.push(
-      <tr>
+      <tr className="table__body">
         <td>{valute[key].CharCode}</td>
         <td>{valute[key].Name}</td>
         <td>{valute[key].Nominal}</td>
         <td>{valute[key].Value}</td>
-        {isWidth(700, <td>{String(valute[key].Value - valute[key].Previous).slice(0, 4)}</td>)}
+        {isWidth(
+          700,
+          <td>
+            {String(valute[key].Value - valute[key].Previous).slice(0, 4)}
+          </td>
+        )}
       </tr>
     );
   }
@@ -45,18 +50,18 @@ const CurrencyTable = () => {
   window.addEventListener("resize", updateDimensions);
 
   return (
-    <table className="currency__table">{generateTable(valute, width)}</table>
+    <table className="currency__table container">{generateTable(valute, width)}</table>
   );
 };
 
 export const Currency = () => {
   return (
-    <article className="currency">
-      <h1>{`ЦБ РФ - Банк России - курсы всех валют на ${today.getUTCDate()} ${
+    <main className="currency container">
+      <h1 className="currency__title">{`ЦБ РФ - Банк России - курсы всех валют на ${today.getUTCDate()} ${
         monthNames[today.getUTCMonth()]
       }, ${today.getUTCFullYear()} года`}</h1>
 
       <CurrencyTable />
-    </article>
+    </main>
   );
 };

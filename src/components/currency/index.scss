@@ -1,0 +1,89 @@
+@import "../../styles/container.scss";
+
+.currency {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 21px;
+
+    color: #222232;
+
+    opacity: 0.8;
+
+    text-align: center;
+  }
+
+  &__table {
+    border: 1px solid #c4c4c4;
+    border-collapse: collapse;
+  }
+}
+
+.table {
+  &__head {
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+
+    text-align: center;
+
+    color: #222232;
+
+    opacity: 0.8;
+  }
+
+  &__body {
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+
+    color: #222232;
+    opacity: 0.8;
+  }
+
+  &__head > th,
+  &__body > td {
+    border: 1px solid #c4c4c4;
+  }
+}
+
+@media (min-width: 767.98px) {
+  .currency__title {
+    font-size: 34px;
+    line-height: 40px;
+  }
+  .table {
+    &__head {
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    &__body {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+}
+
+@media (min-width: 767.98px) {
+  .currency__title {
+    font-size: 34px;
+    line-height: 40px;
+  }
+  .table {
+    &__head {
+      font-size: 16px;
+      line-height: 22px;
+    }
+
+    &__body {
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+}

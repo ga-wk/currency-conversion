@@ -61,7 +61,7 @@ export const Convert = () => {
   };
 
   return (
-    <article className="convert">
+    <main className="convert">
       <h1 className="convert__title">
         {`1 ${
           from.current.value === "RUS"
@@ -84,7 +84,7 @@ export const Convert = () => {
           monthNames[today.getUTCMonth()]
         }, ${today.getUTCHours()}:${today.getUTCMinutes()} UTC Отказ от обязательств`}
       </p>
-      <section className="convert__inputs">
+      <article className="convert__inputs">
         <select
           className="convert__select-from"
           name="from"
@@ -105,18 +105,18 @@ export const Convert = () => {
         </select>
         <input
           className="convert__input-from"
-          type="text"
+          type="number"
           defaultValue="1"
           onChange={handleConvert}
           ref={fromValue}
         />
         <input
           className="convert__input-to"
-          type="text"
+          type="number"
           disabled={true}
           value={toValue}
         />
-      </section>
-    </article>
+      </article>
+    </main>
   );
 };
