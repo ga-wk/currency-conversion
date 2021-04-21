@@ -1,6 +1,20 @@
-# Getting Started with Create React App
+# Currency Conversion
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+SPA для конвертирования валют.
+
+Для получения текущих курсов, было использованно открытое API, предоставленным порталом - https://www.cbr-xml-daily.ru/
+
+Приложение состоит из двух страниц:
+  1. Конвертер из одной валюты в другую.
+  2. Страница с текущими курсами валют относительно Российского рубля.
+
+По-умолчанию у пользователя определена «базовая» валюта, которую он может настроить.
+
+Для реализации приложения были использованы:
+  1. React
+  2. Redux
+
+Для тестирования использовалось Testing Library
 
 ## Available Scripts
 
