@@ -49,8 +49,10 @@ export const Convert = () => {
   );
 
   // событие срабатывающие при изменение значений валют и при изменении самих валют
-  // вызывает функцию по переводу валют
+  
   const handleConvert = () => {
+    
+    // вызывает функцию по переводу валют
     setToValue(
       convertFromXToX(
         from.current.value,

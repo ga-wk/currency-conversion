@@ -7,7 +7,11 @@ import "./index.scss";
 
 export const Header = () => {
   const nav = useRef(null);
+  const btnNav = useRef(null);
+
   const sub = useRef(null);
+  const svgSub = useRef(null);
+
   const wrapper = useRef(null);
   const header = useRef(null);
 
@@ -28,13 +32,14 @@ export const Header = () => {
   //Анимация меню навигации
   const handleNavMenu = (e) => {
     e.preventDefault();
-
     if (!sub.current.classList.contains("close-sub")) {
       sub.current.classList.add("close-sub");
       nav.current.classList.toggle("close-nav");
+      btnNav.current.classList.toggle("open-menu");
+      svgSub.current.classList.toggle("open-menu");
       return true;
     }
-
+    btnNav.current.classList.toggle("open-menu");
     wrapper.current.classList.toggle("hidden");
     nav.current.classList.toggle("close-nav");
     return true;
@@ -47,9 +52,11 @@ export const Header = () => {
     if (!nav.current.classList.contains("close-nav")) {
       nav.current.classList.add("close-nav");
       sub.current.classList.toggle("close-sub");
+      btnNav.current.classList.toggle("open-menu");
+      svgSub.current.classList.toggle("open-menu");
       return true;
     }
-
+    svgSub.current.classList.toggle("open-menu");
     wrapper.current.classList.toggle("hidden");
     sub.current.classList.toggle("close-sub");
     return true;
@@ -58,6 +65,8 @@ export const Header = () => {
   //Анимация закрытия всех меню
   const handleCloseAllMenu = (e) => {
     e.preventDefault();
+    svgSub.current.classList.remove("open-menu");
+    btnNav.current.classList.remove("open-menu");
     nav.current.classList.add("close-nav");
     wrapper.current.classList.add("hidden");
     sub.current.classList.add("close-sub");
@@ -75,6 +84,7 @@ export const Header = () => {
       return false;
     }
   });
+
   return (
     <>
       <header className="header" ref={header}>
@@ -84,6 +94,7 @@ export const Header = () => {
               className="btn"
               data-testid="btn-nav"
               onClick={handleNavMenu}
+              ref={btnNav}
             >
               <span className="hidden">Меню навигации</span>
               <div data-testid="nav" className="nav-burger">
@@ -98,6 +109,7 @@ export const Header = () => {
               className="btn"
               data-testid="btn-sub"
               onClick={handleSubMenu}
+              
             >
               <span className="hidden">Настройки</span>
               <svg
@@ -107,6 +119,7 @@ export const Header = () => {
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
                 data-testid="svg-sub"
+                ref={svgSub}
               >
                 <g opacity="0.8">
                   <path
