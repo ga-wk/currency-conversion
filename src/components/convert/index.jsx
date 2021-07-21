@@ -14,7 +14,7 @@ export const convertFromXToX = (from, to, fromValue) => {
     return 1;
   }
 
-  // пуревод из рублей
+  // перевод из рублей
   if (from === "RUS") {
     toValue =
       (Number(valute[to].Nominal) / Number(valute[to].Value)) *
@@ -49,9 +49,9 @@ export const Convert = () => {
   );
 
   // событие срабатывающие при изменение значений валют и при изменении самих валют
-  
+
   const handleConvert = () => {
-    
+
     // вызывает функцию по переводу валют
     setToValue(
       convertFromXToX(
@@ -65,26 +65,23 @@ export const Convert = () => {
   return (
     <main className="convert container">
       <h1 className="convert__title">
-        {`1 ${
-          from.current.value === "RUS"
+        {`1 ${from.current.value === "RUS"
             ? "Российский рубль"
             : valute[from.current.value].Name
-        } равно `}
-        <br/>
+          } равно `}
+        <br />
         <span className="text--bold">{`${convertFromXToX(
           from.current.value,
           to.current.value,
           1
-        ).toFixed(5)} ${
-          to.current.value === "RUS"
+        ).toFixed(5)} ${to.current.value === "RUS"
             ? "Российский рубль"
             : valute[to.current.value].Name
-        }`}</span>
+          }`}</span>
       </h1>
       <p className="convert__reject">
-        {`${today.getUTCDate()} ${
-          monthNames[today.getUTCMonth()]
-        }, ${today.getUTCHours()}:${today.getUTCMinutes()} UTC Отказ от обязательств`}
+        {`${today.getUTCDate()} ${monthNames[today.getUTCMonth()]
+          }, ${today.getUTCHours()}:${today.getUTCMinutes()} UTC Отказ от обязательств`}
       </p>
       <article className="convert__inputs">
         <select

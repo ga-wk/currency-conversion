@@ -4,9 +4,7 @@ import store from "../redux/store.js";
 import { fetchCurrency } from "../redux/currency/actions.js";
 import { setDefaultCurrency } from "../redux/defaultCurrency/actions.js";
 
-import { Header } from "../components/header";
 import { Currency } from "../components/currency";
-import { Footer } from "../components/footer";
 
 const PageCurrency = ({ currencyData, fetchCurrency }) => {
   //Обновление данных каждые 10сек
