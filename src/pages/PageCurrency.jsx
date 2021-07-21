@@ -30,11 +30,7 @@ const PageCurrency = ({ currencyData, fetchCurrency }) => {
   ) : currencyData.error ? (
     <h2>{currencyData.error}</h2>
   ) : (
-    <div className="page">
-      <Header />
-      <Currency />
-      <Footer />
-    </div>
+    <Currency />
   );
 };
 

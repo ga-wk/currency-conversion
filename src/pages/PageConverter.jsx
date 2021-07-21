@@ -31,11 +31,7 @@ const PageConverter = ({ currencyData, fetchCurrency }) => {
   ) : currencyData.error ? (
     <h2>{currencyData.error}</h2>
   ) : (
-    <div className="page">
-      <Header />
-      <Convert />
-      <Footer />
-    </div>
+    <Convert />
   );
 };
 
